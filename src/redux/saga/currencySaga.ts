@@ -1,13 +1,14 @@
+import { getCurrency } from './../../api/api';
 import { setResult, setError } from './../currencyReducer';
 import { GlobalState } from './../store';
 import { takeEvery, call, put, select } from 'redux-saga/effects';
-import { convertCurrency } from '../../api/api';
 import { GET_CURRENCY_ASYNC } from '../currencyReducer';
 
 function* currencyWorker(action: any) {
-  const currencyStr = convertCurrency.getCurrency(action.pair);
   //@ts-ignore
-  const data = yield call(() => currencyStr);
+  const data = yield call(() => getCurrency());
+  console.log(data);
+
   if (data.status === 200) {
     //@ts-ignore
     const value = yield select((state: GlobalState) => state.currency.value);
