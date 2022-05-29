@@ -7,8 +7,8 @@ export const SET_ERROR = 'currencyReducer/SET_ERROR';
 
 const initialState = {
   value: null,
-  first_currency: null,
-  second_currency: null,
+  firstCurrency: null,
+  secondCurrency: null,
   result: null,
   error: null,
 };
@@ -23,12 +23,12 @@ const currencyReducer = (state = initialState, action: any) => {
     case SET_FIRST_CURRENCY:
       return {
         ...state,
-        first_currency: action.currency,
+        firstCurrency: action.currency,
       };
     case SET_SECOND_CURRENCY:
       return {
         ...state,
-        second_currency: action.currency,
+        secondCurrency: action.currency,
       };
     case SET_RESULT:
       return {

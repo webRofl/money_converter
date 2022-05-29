@@ -11,6 +11,7 @@ function* currencyWorker(action: any) {
   if (data.status === 200) {
     //@ts-ignore
     const value = yield select((state: GlobalState) => state.currency.value);
+    //@ts-ignore
     const result = value * data.data[currencyStr];
     yield put(setResult(result));
   } else {
