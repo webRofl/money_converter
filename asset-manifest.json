@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.js": "/webRofl/money_converter/static/js/main.a9795373.js",
+    "main.css": "/webRofl/money_converter/static/css/main.d01f9d93.css",
+    "main.js": "/webRofl/money_converter/static/js/main.5d64422e.js",
     "static/js/787.496ac1fc.chunk.js": "/webRofl/money_converter/static/js/787.496ac1fc.chunk.js",
     "index.html": "/webRofl/money_converter/index.html",
-    "main.a9795373.js.map": "/webRofl/money_converter/static/js/main.a9795373.js.map",
+    "main.d01f9d93.css.map": "/webRofl/money_converter/static/css/main.d01f9d93.css.map",
+    "main.5d64422e.js.map": "/webRofl/money_converter/static/js/main.5d64422e.js.map",
     "787.496ac1fc.chunk.js.map": "/webRofl/money_converter/static/js/787.496ac1fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a9795373.js"
+    "static/css/main.d01f9d93.css",
+    "static/js/main.5d64422e.js"
   ]
 }
