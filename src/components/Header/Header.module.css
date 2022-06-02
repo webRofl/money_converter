@@ -1,3 +1,43 @@
 .header__wrapper {
-    height: 5vh;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 0px 40px;
+    justify-content: flex-start;
+}
+
+.header__baseCurrencyContext {
+    color: #fff;
+    font-size: 25px;
+}
+
+.header__baseCurrency {
+    cursor: pointer;
+}
+
+.header__baseCurrency:hover {
+    border-bottom: 2px dotted red;
+}
+
+.header__allCurrenciesBtn {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    outline: none;
+    margin-left: 40px;
+}
+
+.header__allCurrenciesBtn:hover {
+    border-bottom: 2px dotted red;
+}
+
+.header__findCurrency {
+    font-size: 25px;
+    margin-left: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
 }

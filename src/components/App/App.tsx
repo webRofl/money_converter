@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import classes from './App.module.css';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
+import AllCurrencies from '../AllCurrencies/AllCurrencies';
 
 const App: React.FC = () => {
   const { rates } = useTypedSelector((state) => state.currency);
@@ -23,6 +24,7 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Converter />} />
+        <Route path="/all-currencies" element={<AllCurrencies />} />
       </Routes>
     </div>
   );

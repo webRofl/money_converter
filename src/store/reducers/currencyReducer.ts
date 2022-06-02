@@ -11,6 +11,8 @@ const initialState: ICurrencyState = {
   convertCurrency: null,
   quantity: null,
   result: null,
+  allCurrencies: null,
+  searchCurrencyValue: null,
 };
 
 const currencyReducer = (state = initialState, action: CurrencyAction) => {
@@ -31,6 +33,21 @@ const currencyReducer = (state = initialState, action: CurrencyAction) => {
       return {
         ...state,
         result: action.result,
+      };
+    case currencyActionTypes.SET_BASE_CURRENCY:
+      return {
+        ...state,
+        baseCurrency: action.baseCurrency,
+      };
+    case currencyActionTypes.SET_ALL_CURRENCIES_SUCCESS:
+      return {
+        ...state,
+        allCurrencies: action.currencies,
+      };
+    case currencyActionTypes.SET_SEARCH_CURRENCY_VALUE:
+      return {
+        ...state,
+        searchCurrencyValue: action.value,
       };
     default:
       return state;
