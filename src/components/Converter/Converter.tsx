@@ -1,86 +1,57 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getCurrencyAsync,
-  setFirstCurrency,
-  setSecondCurrency,
-  setValue,
-} from '../../redux/currencyReducer';
-import { GlobalState } from '../../redux/store';
-import { currencyStringConverter } from '../../utils/currencyStringConverter';
+import React, { useState } from 'react';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { currencyParser } from '../../utils/currency';
+import classes from './Converter.module.css';
 
 const Converter: React.FC = () => {
-  const dispatch = useDispatch();
+  const { result } = useTypedSelector((state) => state.currency);
 
-  const currencyValue = useSelector(
-    //@ts-ignore
-    (state: GlobalState) => state.currency.value
-  );
+  const { setCurrencyInfo, setResult } = useActions();
 
-  const firstCurrency = useSelector(
-    //@ts-ignore
-    (state: GlobalState) => state.currency.firstCurrency
-  );
+  const [inputValue, setInputValue] = useState<string>('');
 
-  const secondCurrency = useSelector(
-    //@ts-ignore
-    (state: GlobalState) => state.currency.secondCurrency
-  );
+  const [isClick, setIsClick] = useState<boolean>(false);
 
-  const result = useSelector(
-    (state: GlobalState) =>
-      //@ts-ignore
-      state.currency.result
-  );
-
-  const inputsCheck = () => {
-    console.log(firstCurrency, secondCurrency);
-
-    if (firstCurrency && secondCurrency)
-      dispatch(
-        getCurrencyAsync(currencyStringConverter(firstCurrency, secondCurrency))
-      );
+  const handleChangeInputValue = (event: React.FormEvent<HTMLInputElement>) => {
+    if (isClick) setIsClick(false);
+    setInputValue(event.currentTarget.value);
   };
 
-  const valueHandleChange = (event: any) =>
-    dispatch(setValue(event.currentTarget.value));
-
-  const firstCurrencyHandleChange = (event: any) => {
-    inputsCheck();
-    dispatch(setFirstCurrency(event.currentTarget.value));
-  };
-
-  const secondCurrencyHandleChange = (event: any) => {
-    inputsCheck();
-    dispatch(setSecondCurrency(event.currentTarget.value));
+  const handleClick = () => {
+    setIsClick(true);
+    const [quantity, originalCurrency, convertCurrency] =
+      currencyParser(inputValue);
+    setCurrencyInfo(originalCurrency, convertCurrency, quantity);
+    setResult(originalCurrency, convertCurrency, quantity);
   };
 
   return (
-    <>
-      <form>
-        <span>Перевести</span>
-        <input
-          type="number"
-          value={currencyValue || 0}
-          onChange={valueHandleChange}
-        />
-        <input
-          type="text"
-          value={firstCurrency || ''}
-          onChange={firstCurrencyHandleChange}
-        />
-        <span>в</span>
-        <input
-          type="text"
-          value={secondCurrency || ''}
-          onChange={secondCurrencyHandleChange}
-        />
-      </form>
-      <div>
-        <span>Результат</span>
-        <span>{result}</span>
-      </div>
-    </>
+    <div className={classes.converter__wrapper}>
+      <input
+        className={classes.converter__input}
+        type="text"
+        placeholder="15 usd in eur"
+        autoFocus
+        value={inputValue}
+        onChange={handleChangeInputValue}
+      />
+      {isClick ? (
+        <div className={classes.converter__resultBlock}>
+          <span className={classes.converter__result}>
+            {result || '...Loading'}
+          </span>
+        </div>
+      ) : (
+        <button
+          className={classes.converter__btn}
+          onClick={handleClick}
+          disabled={!!!inputValue.match(/\d.[a-zA-Z]{3,}.in.[a-zA-Z]{3,}/g)}
+        >
+          Convert
+        </button>
+      )}
+    </div>
   );
 };
 

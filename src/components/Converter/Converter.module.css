@@ -1,0 +1,42 @@
+.converter__wrapper {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.converter__input {
+    font-size: 40px;
+    padding: 5px 8px;
+    text-align: center;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.converter__btn {
+    height: 56px;
+    margin-left: 40px;
+    padding: 5px 30px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 40px;
+    outline: none;
+}
+
+.converter__btn:disabled {
+    color: grey;
+}
+
+.converter__resultBlock {
+    height: 56px;
+    margin-left: 68px;
+    padding: 5px 30px;
+}
+
+.converter__result {
+    color: #fff;
+    font-size: 40px;
+}
