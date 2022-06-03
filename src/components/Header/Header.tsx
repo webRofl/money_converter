@@ -1,10 +1,14 @@
 import React from 'react';
-import { useLocation, useMatch, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import classes from './Header.module.css';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  setIsShowModal: (isShowModal: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = (props) => {
   const { baseCurrency, searchCurrencyValue } = useTypedSelector(
     (state) => state.currency
   );
@@ -19,6 +23,8 @@ const Header: React.FC = () => {
     event: React.FormEvent<HTMLInputElement>
   ) => setSearchCurrencyValue(event.currentTarget.value);
 
+  const handleClickChangeBase = () => props.setIsShowModal(true);
+
   return (
     <div className={classes.header__wrapper}>
       {location.pathname === '/all-currencies' ? (
@@ -27,7 +33,7 @@ const Header: React.FC = () => {
             Base Currency:{' '}
             <span
               className={classes.header__baseCurrency}
-              onClick={() => navigate('/all-currencies')}
+              onClick={() => handleClickChangeBase()}
             >
               {baseCurrency.toUpperCase()}
             </span>

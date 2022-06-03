@@ -1,0 +1,60 @@
+import React from 'react';
+import { useActions } from '../../../hooks/useActions';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { Rates } from '../../../store/types/currency';
+import classes from './Modal.module.css';
+
+interface ModalProps {
+  rates: Rates;
+  setBaseCurrency: (base: string) => void;
+  isShowModal: boolean;
+  setIsShowModal: (isShowModal: boolean) => void;
+}
+
+const Modal: React.FC<ModalProps> = (props) => {
+  const { setAllCurrencies } = useActions();
+
+  const { rates, baseCurrency } = useTypedSelector((state) => state.currency);
+
+  const handleBtnClick = (event: React.FormEvent<HTMLButtonElement>) => {
+    props.setBaseCurrency(event.currentTarget.textContent || 'usd');
+    props.setIsShowModal(false);
+    setAllCurrencies(event.currentTarget.textContent || 'usd', rates);
+  };
+
+  return (
+    <div
+      className={
+        props.isShowModal
+          ? `${classes.modal__wrapper_active} ${classes.modal__wrapper}`
+          : classes.modal__wrapper
+      }
+      onClick={() => props.setIsShowModal(false)}
+    >
+      <div
+        className={
+          props.isShowModal
+            ? `${classes.modal__content_active} ${classes.modal__content}`
+            : classes.modal__content
+        }
+        onClick={(event: React.FormEvent<HTMLDivElement>) =>
+          event.stopPropagation()
+        }
+      >
+        {Object.keys(props.rates).map((key, index) => {
+          return (
+            <button
+              key={index}
+              onClick={handleBtnClick}
+              className={classes.modal__element}
+            >
+              {key.toUpperCase()}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Modal;

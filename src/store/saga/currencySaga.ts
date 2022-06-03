@@ -60,6 +60,7 @@ interface setCurrenciesWorkerAction {
 
 function* setCurrenciesWorker(action: setCurrenciesWorkerAction) {
   const result = convertAll(action.baseCurrency, action.rates);
+
   yield put(setAllCurrenciesSuccess(result));
 }
 

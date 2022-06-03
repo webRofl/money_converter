@@ -10,6 +10,8 @@ export const currencyParser = (str: string): [number, string, string] => {
 export const convertAll = (base: string, rates: Rates): Rates[] => {
   const resultRates: Rates[] = [];
   for (const key in rates) {
+    console.log(base);
+
     if (base === 'usd') {
       resultRates.push({
         [key]: rates[key],
@@ -17,7 +19,7 @@ export const convertAll = (base: string, rates: Rates): Rates[] => {
     } else {
       resultRates.push({
         [key]: parseFloat(
-          (rates[key.toUpperCase()] / rates[base.toUpperCase()]).toFixed(2)
+          (rates[key.toUpperCase()] / rates[base.toUpperCase()]).toFixed(6)
         ),
       });
     }

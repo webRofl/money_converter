@@ -2,12 +2,18 @@ import React, { useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import classes from './AllCurrencies.module.css';
+import Modal from './Modal/Modal';
 
-const AllCurrencies: React.FC = () => {
+interface AllCurrenciesProps {
+  isShowModal: boolean;
+  setIsShowModal: (isShowModal: boolean) => void;
+}
+
+const AllCurrencies: React.FC<AllCurrenciesProps> = (props) => {
   const { rates, baseCurrency, allCurrencies, searchCurrencyValue } =
     useTypedSelector((state) => state.currency);
 
-  const { setAllCurrencies, filterCurrencies } = useActions();
+  const { setAllCurrencies, filterCurrencies, setBaseCurrency } = useActions();
 
   useEffect(() => {
     if (allCurrencies && searchCurrencyValue) {
@@ -37,6 +43,12 @@ const AllCurrencies: React.FC = () => {
           </div>
         );
       })}
+      <Modal
+        rates={rates}
+        setBaseCurrency={setBaseCurrency}
+        isShowModal={props.isShowModal}
+        setIsShowModal={props.setIsShowModal}
+      />
     </div>
   );
 };

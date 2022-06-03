@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Preloader from '../common/Preloader/Preloader';
 import Converter from '../Converter/Converter';
@@ -13,6 +13,8 @@ const App: React.FC = () => {
 
   const { getCurrencyAsync } = useActions();
 
+  const [isShowModal, setIsShowModal] = useState<boolean>(false);
+
   useEffect(() => {
     getCurrencyAsync();
   }, []);
@@ -21,10 +23,18 @@ const App: React.FC = () => {
 
   return (
     <div className={classes.app__wrapper}>
-      <Header />
+      <Header setIsShowModal={setIsShowModal} />
       <Routes>
         <Route path="/" element={<Converter />} />
-        <Route path="/all-currencies" element={<AllCurrencies />} />
+        <Route
+          path="/all-currencies"
+          element={
+            <AllCurrencies
+              isShowModal={isShowModal}
+              setIsShowModal={setIsShowModal}
+            />
+          }
+        />
       </Routes>
     </div>
   );
