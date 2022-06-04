@@ -16,7 +16,6 @@
 
 .converter__btn {
     height: 56px;
-    margin-left: 40px;
     padding: 5px 30px;
     background: transparent;
     border: none;
@@ -24,6 +23,7 @@
     cursor: pointer;
     font-size: 40px;
     outline: none;
+    width: 350px;
 }
 
 .converter__btn:disabled {
@@ -32,11 +32,29 @@
 
 .converter__resultBlock {
     height: 56px;
-    margin-left: 68px;
     padding: 5px 30px;
+    width: 350px;
+    text-align: center;
 }
 
 .converter__result {
     color: #fff;
     font-size: 40px;
+}
+
+@media (max-width: 567px) {
+    .converter__wrapper {
+        flex-direction: column;
+        width: 90vw;
+        height: calc(90vh - 50px);
+    }
+
+    .converter__input {
+        width: 90vw;
+        margin-left: 10vw;
+    }
+
+    .converter__btn, .converter__resultBlock {
+        margin-left: 10vw;
+    }
 }

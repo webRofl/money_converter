@@ -30,26 +30,20 @@ function* convertWorker(action: ConvertWorkerAction) {
 
   //@ts-ignore
   const rates = yield select((state: RootState) => state.currency.rates);
-  if (
-    originalCurrency.toLocaleLowerCase() === convertCurrency.toLocaleLowerCase()
-  ) {
-    yield put(setResultSuccess(quantity));
-    return;
-  } else if (originalCurrency.toLocaleLowerCase() === 'usd') {
-    const result = rates[convertCurrency.toUpperCase()] * quantity;
-
-    yield put(setResultSuccess(parseFloat(result.toFixed(2))));
-    return;
-  } else if (convertCurrency.toLocaleLowerCase() === 'usd') {
-    const result = (1 / rates[originalCurrency.toUpperCase()]) * quantity;
-    yield put(setResultSuccess(parseFloat(result.toFixed(2))));
-    return;
-  }
-
   const result =
     (rates[convertCurrency.toUpperCase()] /
       rates[originalCurrency.toUpperCase()]) *
     quantity;
+
+  if (isNaN(result)) {
+    yield put(setResultSuccess(-1));
+    return;
+  }
+
+  if (parseFloat(result.toFixed(2)) === 0) {
+    yield put(setResultSuccess(parseFloat(result.toFixed(8))));
+    return;
+  }
   yield put(setResultSuccess(parseFloat(result.toFixed(2))));
 }
 

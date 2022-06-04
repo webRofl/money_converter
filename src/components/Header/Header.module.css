@@ -31,6 +31,7 @@
 
 .header__allCurrenciesBtn:hover {
     border-bottom: 2px dotted red;
+    margin-top: 2px;
 }
 
 .header__findCurrency {
@@ -47,4 +48,19 @@
 
 .header__findCurrency:focus {
     border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 567px) {
+    .header__wrapper {
+        padding: 0;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 25px;
+        margin-bottom: 50px;
+        align-items: center;
+    }
+    
+    .header__allCurrenciesBtn {
+        margin: 0;
+    } 
 }

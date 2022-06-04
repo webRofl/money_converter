@@ -14,7 +14,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = (props) => {
   const { setAllCurrencies } = useActions();
 
-  const { rates, baseCurrency } = useTypedSelector((state) => state.currency);
+  const { rates } = useTypedSelector((state) => state.currency);
 
   const handleBtnClick = (event: React.FormEvent<HTMLButtonElement>) => {
     props.setBaseCurrency(event.currentTarget.textContent || 'usd');
@@ -29,29 +29,28 @@ const Modal: React.FC<ModalProps> = (props) => {
           ? `${classes.modal__wrapper_active} ${classes.modal__wrapper}`
           : classes.modal__wrapper
       }
-      onClick={() => props.setIsShowModal(false)}
     >
-      <div
-        className={
-          props.isShowModal
-            ? `${classes.modal__content_active} ${classes.modal__content}`
-            : classes.modal__content
-        }
-        onClick={(event: React.FormEvent<HTMLDivElement>) =>
-          event.stopPropagation()
-        }
-      >
-        {Object.keys(props.rates).map((key, index) => {
-          return (
-            <button
-              key={index}
-              onClick={handleBtnClick}
-              className={classes.modal__element}
-            >
-              {key.toUpperCase()}
-            </button>
-          );
-        })}
+      <div className={classes.modal__scrollWrapper}>
+        <div
+          className={
+            props.isShowModal
+              ? `${classes.modal__content_active} ${classes.modal__content}`
+              : classes.modal__content
+          }
+          onClick={() => props.setIsShowModal(false)}
+        >
+          {Object.keys(props.rates).map((key, index) => {
+            return (
+              <button
+                key={index}
+                onClick={handleBtnClick}
+                className={classes.modal__element}
+              >
+                {key.toUpperCase()}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

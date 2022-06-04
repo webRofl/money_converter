@@ -10,8 +10,6 @@ export const currencyParser = (str: string): [number, string, string] => {
 export const convertAll = (base: string, rates: Rates): Rates[] => {
   const resultRates: Rates[] = [];
   for (const key in rates) {
-    console.log(base);
-
     if (base === 'usd') {
       resultRates.push({
         [key]: rates[key],
