@@ -8,14 +8,30 @@ import {
   Rates,
 } from './../types/currency';
 import { getCurrency } from '../../api/api';
-import { takeEvery, call, put, select } from 'redux-saga/effects';
+import {
+  takeEvery,
+  call,
+  put,
+  select,
+  CallEffect,
+  PutEffect,
+  SelectEffect,
+} from 'redux-saga/effects';
 import { setResultSuccess, setCurrencyRates } from '../actions/currency';
 import { convertAll, filterCurrencies } from '../../utils/currency';
 
-function* currencyWorker() {
-  //@ts-ignore
+interface IResponseGetCurrency {
+  data: {
+    rates: Rates;
+  };
+}
+
+function* currencyWorker(): Generator<
+  CallEffect | PutEffect,
+  void,
+  IResponseGetCurrency
+> {
   const data = yield call(() => getCurrency());
-  //@ts-ignore
   yield put(setCurrencyRates(data.data.rates));
 }
 
@@ -25,10 +41,11 @@ interface ConvertWorkerAction {
   quantity: number;
 }
 
-function* convertWorker(action: ConvertWorkerAction) {
+function* convertWorker(
+  action: ConvertWorkerAction
+): Generator<SelectEffect | PutEffect, void, Rates> {
   const { originalCurrency, convertCurrency, quantity } = action;
 
-  //@ts-ignore
   const rates = yield select((state: RootState) => state.currency.rates);
   const result =
     (rates[convertCurrency.toUpperCase()] /

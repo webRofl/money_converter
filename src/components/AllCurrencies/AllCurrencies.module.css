@@ -40,8 +40,3 @@ body::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 10px;
 }
-
-@media (max-width: 567px) {
-    .allCurrencies__wrapper {
-    }
-}

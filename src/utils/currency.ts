@@ -3,8 +3,9 @@ import { Rates } from './../store/types/currency';
 export const currencyParser = (str: string): [number, string, string] => {
   const quantity = str.match(/\d/g)?.join('');
   const currency = str.match(/[a-z]{3}/g);
-  //@ts-ignore
-  return [parseFloat(quantity), currency[0], currency[1]];
+  if (quantity && currency)
+    return [parseFloat(quantity), currency[0], currency[1]];
+  else return [-1, 'usd', 'usd'];
 };
 
 export const convertAll = (base: string, rates: Rates): Rates[] => {

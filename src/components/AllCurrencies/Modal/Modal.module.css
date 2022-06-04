@@ -19,7 +19,6 @@
 
 .modal__scrollWrapper {
     position: relative;
-    border: 1px solid red;
 }
 
 .modal__content {

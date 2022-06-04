@@ -29,6 +29,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           ? `${classes.modal__wrapper_active} ${classes.modal__wrapper}`
           : classes.modal__wrapper
       }
+      onClick={() => props.setIsShowModal(false)}
     >
       <div className={classes.modal__scrollWrapper}>
         <div
