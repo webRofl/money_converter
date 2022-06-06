@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   const navigate = useNavigate();
 
   const handleChangeSearchCurrencyValue = (
-    event: React.FormEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>
   ) => setSearchCurrencyValue(event.currentTarget.value);
 
   const handleClickChangeBase = () => props.setIsShowModal(true);

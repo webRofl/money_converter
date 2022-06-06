@@ -13,7 +13,9 @@ const Converter: React.FC = () => {
 
   const [isClick, setIsClick] = useState<boolean>(false);
 
-  const handleChangeInputValue = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleChangeInputValue = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (isClick) setIsClick(false);
     setInputValue(event.currentTarget.value);
   };

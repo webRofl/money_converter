@@ -6,3 +6,20 @@
     box-sizing: border-box;
     font-family: 'Ubuntu Condensed', sans-serif;
 }
+
+body::-webkit-scrollbar {
+    background-image: url('./assets/images/bg.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 7px;
+}
+
+body::-webkit-scrollbar-button {
+    display: none;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
