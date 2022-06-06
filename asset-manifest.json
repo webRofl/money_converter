@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/webRofl/money_converter/static/css/main.d01f9d93.css",
-    "main.js": "/webRofl/money_converter/static/js/main.5d64422e.js",
-    "static/js/787.496ac1fc.chunk.js": "/webRofl/money_converter/static/js/787.496ac1fc.chunk.js",
-    "index.html": "/webRofl/money_converter/index.html",
-    "main.d01f9d93.css.map": "/webRofl/money_converter/static/css/main.d01f9d93.css.map",
-    "main.5d64422e.js.map": "/webRofl/money_converter/static/js/main.5d64422e.js.map",
-    "787.496ac1fc.chunk.js.map": "/webRofl/money_converter/static/js/787.496ac1fc.chunk.js.map"
+    "main.css": "/money_converter/static/css/main.57731148.css",
+    "main.js": "/money_converter/static/js/main.62bd71f5.js",
+    "static/js/787.496ac1fc.chunk.js": "/money_converter/static/js/787.496ac1fc.chunk.js",
+    "static/media/preloader.gif": "/money_converter/static/media/preloader.c3f9794ff1a34caa0fea.gif",
+    "static/media/bg.webp": "/money_converter/static/media/bg.07f7df5b4e901d6b4dd4.webp",
+    "index.html": "/money_converter/index.html",
+    "main.57731148.css.map": "/money_converter/static/css/main.57731148.css.map",
+    "main.62bd71f5.js.map": "/money_converter/static/js/main.62bd71f5.js.map",
+    "787.496ac1fc.chunk.js.map": "/money_converter/static/js/787.496ac1fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d01f9d93.css",
-    "static/js/main.5d64422e.js"
+    "static/css/main.57731148.css",
+    "static/js/main.62bd71f5.js"
   ]
 }
