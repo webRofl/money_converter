@@ -30,6 +30,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           : classes.modal__wrapper
       }
       onClick={() => props.setIsShowModal(false)}
+      data-testid="modal-wrapper"
     >
       <div
         className={

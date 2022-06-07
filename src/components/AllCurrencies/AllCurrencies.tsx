@@ -28,12 +28,15 @@ const AllCurrencies: React.FC<AllCurrenciesProps> = (props) => {
       <div
         className={`${classes.allCurrencies__wrapper} ${classes.allCurrencies__wrapper_notFound}`}
       >
-        <h1>currency wasn't found</h1>
+        <h1 data-testid="currency-not-found">currency wasn't found</h1>
       </div>
     );
 
   return (
-    <div className={classes.allCurrencies__wrapper}>
+    <div
+      className={classes.allCurrencies__wrapper}
+      data-testid="all-currencies-wrapper"
+    >
       {allCurrencies?.map((currency, index) => {
         const key = Object.keys(currency)[0];
         return (

@@ -22,7 +22,7 @@ const App: React.FC = () => {
   if (Object.keys(rates).length === 0) return <Preloader />;
 
   return (
-    <div className={classes.app__wrapper}>
+    <div className={classes.app__wrapper} data-testid="app-wrapper">
       <Header setIsShowModal={setIsShowModal} />
       <Routes>
         <Route path="/" element={<Converter />} />

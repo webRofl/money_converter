@@ -20,13 +20,13 @@ import {
 import { setResultSuccess, setCurrencyRates } from '../actions/currency';
 import { convertAll, filterCurrencies } from '../../utils/currency';
 
-interface IResponseGetCurrency {
+export interface IResponseGetCurrency {
   data: {
     rates: Rates;
   };
 }
 
-function* currencyWorker(): Generator<
+export function* currencyWorker(): Generator<
   CallEffect | PutEffect,
   void,
   IResponseGetCurrency

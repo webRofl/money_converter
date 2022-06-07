@@ -39,8 +39,11 @@ const Converter: React.FC = () => {
         onChange={handleChangeInputValue}
       />
       {isClick ? (
-        <div className={classes.converter__resultBlock}>
-          <span className={classes.converter__result}>
+        <div
+          className={classes.converter__resultBlock}
+          data-testid="result-block"
+        >
+          <span className={classes.converter__result} data-testid="result-span">
             {result === -1 ? 'Invalid Currency' : result || '...Loading'}
           </span>
         </div>
