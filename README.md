@@ -77,5 +77,5 @@ $ npm i
 $ npm start
 ```
 
-[1]: https://webrofl.github.io/weather-app/](https://webrofl.github.io/money_converter/
+[1]: https://webrofl.github.io/money_converter
 [2]: https://nodejs.org/
